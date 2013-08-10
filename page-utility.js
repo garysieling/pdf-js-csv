@@ -36,3 +36,16 @@ function get_characters(pages) {
   }
   return map;
 }
+
+
+function typewriter(a, b) {
+  var dx = b.x - a.x;
+  var dy = b.y - a.y;
+ 
+  if (Math.abs(dy) < 0.5) {
+    return dx * -1;
+  } else {
+    return dy * -1;
+  }
+}
+
