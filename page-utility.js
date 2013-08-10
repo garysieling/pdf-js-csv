@@ -26,3 +26,13 @@ function height(page) {
   return get_value(page, get_y, max_cmp) - 
          get_value(page, get_y, min_cmp);
 }
+
+function get_characters(pages) {
+  var map = {}; 
+  for (var i = 0; i < pages.length; i++) { 
+    for (j = 0; j < pages[i].length; j++) { 
+      map['*' + pages[i][j].c + '*'] = 1; 
+    }
+  }
+  return map;
+}
