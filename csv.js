@@ -31,3 +31,11 @@ function getText(marks, ex, ey, v) {
  
   return txt;
 }
+
+function csv(pages) {
+  var res = '';
+  for (var i = 0; i < pages.length; i++) {
+    res += getText(pages[1], typewriter, 20, 15, false)
+  }
+  return res;
+}
