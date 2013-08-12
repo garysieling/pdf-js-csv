@@ -79,13 +79,23 @@ function getText(marks, sort_fn, ex, ey, v) {
   return rows;
 }
 
-function toCSV(rows) {
+
+function toCSV(rows, row_filters) {
+  if (row_filters === undefined) { row_filters = [] }
+
   var res = "";
   for (var i = 0; i < rows.length; i++) {
-    for (var j = 0; j < rows[i].length; j++) {
-      res += "\"" + rows[i][j] + "\",";
+    include_row = true;
+    for (var k = 0; k < row_filters.length; k++) {
+      include_row = include_row && row_filters[k](rows[i], i);
     }
-    res += "\n";
+
+    if (include_row) {
+      for (var j = 0; j < rows[i].length; j++) {
+        res += "\"" + rows[i][j] + "\",";
+      }
+      res += "\n";
+    }
   }
   return res;
 }
