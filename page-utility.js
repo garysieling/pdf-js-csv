@@ -1,4 +1,4 @@
-unction get_value(items, calc, cmp) {
+function get_value(items, calc, cmp) {
   var result;
   for (var i = 0; i < items.length; i++) {
     var cur_value = calc(items[i]);
