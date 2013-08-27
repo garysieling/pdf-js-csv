@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+        <head>
+                <script lang="Javascript">
+if (!Function.prototype.bind) {
+  Function.prototype.bind = function (oThis) {
+    if (typeof this !== "function") {
+      // closest thing possible to the ECMAScript 5 internal IsCallable function
+      throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+    }
+
+    var aArgs = Array.prototype.slice.call(arguments, 1), 
+        fToBind = this, 
+        fNOP = function () {},
+        fBound = function () {
+          return fToBind.apply(this instanceof fNOP && oThis
+                                 ? this
+                                 : oThis,
+                               aArgs.concat(Array.prototype.slice.call(arguments)));
+        };
+
+    fNOP.prototype = this.prototype;
+    fBound.prototype = new fNOP();
+
+    return fBound;
+  };
+}
+</script>                        
+  <!-- In production, only one script (pdf.js) is necessary -->
+  <!-- In production, change the content of PDFJS.workerSrc below -->
+  <script type="text/javascript" src="../../pdf.js/src/shared/util.js"></script>
+  <script type="text/javascript" src="../../pdf.js/src/shared/colorspace.js"></script>
+  <script type="text/javascript" src="../../pdf.js/src/shared/pattern.js"></script>
+  <script type="text/javascript" src="../../pdf.js/src/shared/function.js"></script>
+  <script type="text/javascript" src="../../pdf.js/src/shared/annotation.js"></script>
+  <script type="text/javascript" src="../../pdf.js/src/display/api.js"></script>
+  <script type="text/javascript" src="../../pdf.js/src/display/metadata.js"></script>
+  <script type="text/javascript" src="../../pdf.js/src/display/canvas.js"></script>
+  <script type="text/javascript" src="../../pdf.js/src/display/font_loader.js"></script>
+  <script type="text/javascript" src="../../pdf.js/src/display/font_renderer.js"></script>
+
+  <script type="text/javascript">
+    // Specify the main script used to create a new PDF.JS web worker.
+    // In production, change this to point to the combined `pdf.js` file.
+    //PDFJS.workerSrc = '../../pdf.js/src/worker_loader.js';
+
+  </script>
+  <script type="text/javascript" src="extract-characters.js"></script>
+</head>
+<div id="pdf"></div>
+<body>
+</body>
+
+</html>

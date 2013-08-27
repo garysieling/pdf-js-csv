@@ -14,9 +14,9 @@ function parsePDF() {
   var data = dataElement.innerText;
   var binary = atob(data);
 
-//  window.isArrayBuffer = function(x) { 
-//    return x instanceof ArrayBuffer; 
-//  }
+  window.isArrayBuffer = function(x) { 
+    return x instanceof ArrayBuffer; 
+  }
 
   function str2ab(str) {
     var buf = new ArrayBuffer(str.length*2); // 2 bytes for each char
