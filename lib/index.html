@@ -14,9 +14,17 @@ if (!Function.prototype.bind) {
         fToBind = this, 
         fNOP = function () {},
         fBound = function () {
-          return fToBind.apply(this instanceof fNOP && oThis
+          console.log("test 1: " + fNOP); 
+          console.log("test 2: " + fToBind); 
+          console.log("test 3: " + oThis); 
+         /* if (!!fToBind.prototype && !!oThis) {
+             console.log("hit");
+             return fToBind.call(oThis, arguments);
+          } */
+          var scopeObj = this instanceof fNOP && oThis
                                  ? this
-                                 : oThis,
+                                 : oThis;
+          return fToBind.apply(scopeObj,
                                aArgs.concat(Array.prototype.slice.call(arguments)));
         };
 
@@ -43,7 +51,8 @@ if (!Function.prototype.bind) {
   <script type="text/javascript">
     // Specify the main script used to create a new PDF.JS web worker.
     // In production, change this to point to the combined `pdf.js` file.
-    PDFJS.workerSrc = '../../pdf.js/src/worker_loader.js';
+PDFJS.disableWorker = true;
+    //PDFJS.workerSrc = '../../pdf.js/src/worker_loader.js';
 
   </script>
   <script type="text/javascript" src="extract-characters.js"></script>

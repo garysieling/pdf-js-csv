@@ -36,13 +36,27 @@ if (system.args.length === 1) {
   
   page.onCallback = function(data) {
     console.log(data);
-    phantom.exit();
+//    phantom.exit();
   }
+  
+  page.onConsoleMessage = function() {
+    console.log("Page: " + arguments[0]);
+  };
 
   page.open(url, function (status) {
     page.evaluate(function(data) {
       document.getElementById("pdf").innerText = data;
       window.callPhantom("Sample: " + data.substring(0, 100));
+
+      var x = parsePDF();
+      console.log("After parse");
+  
+      var y = function() {
+        console.log("Before print");
+        x();
+        console.log("After print");
+      };
+      setTimeout(y, 500);
     }, data);
     console.log("Finished");
   });
