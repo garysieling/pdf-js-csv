@@ -38,11 +38,7 @@ if (system.args.length === 1) {
 
   page.open(url, function (status) {
     page.evaluate(function(data) {
-      document.getElementById("pdf").innerText = data;
-      window.callPhantom("Sample: " + data);
-
       var x = parsePDF(data);
-      console.log("After parse");
   
       var y = function() {
         console.log("Before print");
