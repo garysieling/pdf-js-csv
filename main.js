@@ -6,17 +6,12 @@ if (system.args.length === 1) {
   phantom.exit();
 } else {
   var pdf = system.args[1];
-
-  function utf8_to_b64( str ) {
-    return window.btoa(unescape(encodeURIComponent(str)));
-  }
-
-  var content = '',
+  var data = '',
     f = null;
 
   try {
-    f = fs.open(system.args[1], "r");
-    content = f.read();
+    f = fs.open(system.args[1], 'rb');
+    data = f.read();
   } catch (e) {
     console.log(e);
     if (f !== null) {
@@ -29,26 +24,24 @@ if (system.args.length === 1) {
     f.close();
   }
   
-  var data = utf8_to_b64(content);
-
   var page = require('webpage').create();
   var url = 'lib/index.html';
-  
+
+  var i = 0;  
   page.onCallback = function(data) {
     console.log(data);
-//    phantom.exit();
   }
   
-  page.onConsoleMessage = function() {
-    console.log("Page: " + arguments[0]);
+  page.onConsoleMessage = function(data) {
+    console.log(data);
   };
 
   page.open(url, function (status) {
     page.evaluate(function(data) {
       document.getElementById("pdf").innerText = data;
-      window.callPhantom("Sample: " + data.substring(0, 100));
+      window.callPhantom("Sample: " + data);
 
-      var x = parsePDF();
+      var x = parsePDF(data);
       console.log("After parse");
   
       var y = function() {
@@ -60,6 +53,5 @@ if (system.args.length === 1) {
     }, data);
     console.log("Finished");
   });
-
 }
 
