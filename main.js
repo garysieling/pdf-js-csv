@@ -36,6 +36,18 @@ if (system.args.length === 1) {
     console.log(data);
   };
 
+  page.onResourceRequested = function (request) {
+    console.log('Request ' + JSON.stringify(request, undefined, 4));
+  };
+  
+  page.onError = function (msg, trace) {
+    console.log(msg);
+    trace.forEach(function(item) {
+        console.log('  ', item.file, ':', item.line);
+    })
+  }
+ 
+
   page.open(url, function (status) {
     page.evaluate(function(data) {
       var x = parsePDF(data);
@@ -45,7 +57,7 @@ if (system.args.length === 1) {
         x();
         console.log("After print");
       };
-      setTimeout(y, 500);
+      setTimeout(y, 5000);
     }, data);
     console.log("Finished");
   });
