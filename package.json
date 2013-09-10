@@ -1,0 +1,20 @@
+{
+  "author": "Gary Sieling",
+  "name": "pdf2csv",
+  "description": "Convert a PDF to CSV.",
+  "version": "0.1.0",
+  "repository": {
+    "url": ""
+  },
+  "main": "./lib/main",
+  "bin": {
+    "pdf2csv": "./bin/pdf2csv"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
+
