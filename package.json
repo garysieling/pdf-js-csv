@@ -1,20 +1,30 @@
 {
   "author": "Gary Sieling",
   "name": "pdf2csv",
-  "description": "Convert a PDF to CSV.",
+  "description": "Extract tabular data from a PDF.",
+  "contributors": [ {
+    "name: "Gary Sieling",
+    "email": "gary.sieling@gmail.com"
+  } ],
   "version": "0.1.0",
   "repository": {
-    "url": ""
+    "type": "git",
+    "url": "https://github.com/garysieling/pdf-js-csv"
   },
   "main": "./lib/main",
   "bin": {
     "pdf2csv": "./bin/pdf2csv"
   },
-  "dependencies": {},
+  "keywords" : [ 
+    "pdf", "csv", "xls", "scraping"
+  ],
+  "dependencies": {
+    "pdf2json": ">= 0.4.7"
+  },
+  "license": "GPL",
   "devDependencies": {},
   "optionalDependencies": {},
   "engines": {
     "node": "*"
   }
 }
-
