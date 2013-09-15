@@ -15,7 +15,9 @@ pdf-js-csv
 Quick Start
 -----------
  npm install pdf2csv --no-bin-links
- 
- git clone https://github.com/garysieling/pdf-js-csv
 
- node pdf-js-csv/main pdf-js-csv/examples/tests.pdf output.csv
+ wget https://github.com/garysieling/pdf-js-csv/raw/master/examples/tests.pdf --no-check-certificate
+ 
+ wget https://raw.github.com/garysieling/pdf-js-csv/master/main.js --no-check-certificate
+
+ node main tests.pdf output.csv
