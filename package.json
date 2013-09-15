@@ -19,7 +19,8 @@
     "pdf", "csv", "xls", "scraping"
   ],
   "dependencies": {
-    "pdf2json": ">= 0.4.7"
+    "pdf2json": ">= 0.4.7",
+    "underscore": ">= 1.5.2"
   },
   "license": "GPL",
   "devDependencies": {},
