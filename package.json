@@ -3,7 +3,7 @@
   "name": "pdf2csv",
   "description": "Extract tabular data from a PDF.",
   "contributors": [ {
-    "name: "Gary Sieling",
+    "name": "Gary Sieling",
     "email": "gary.sieling@gmail.com"
   } ],
   "version": "0.1.0",
