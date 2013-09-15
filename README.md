@@ -18,6 +18,7 @@ Quick Start
  csv pdf-js-csv
 
  npm install pdf2json
+ 
  npm install underscore
 
  node main examples/tests.pdf output.csv
